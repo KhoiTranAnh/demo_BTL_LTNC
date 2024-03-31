@@ -35,8 +35,19 @@ let signInUser = (event) => {
 
   signInWithEmailAndPassword(auth, email.value, password.value)
     .then((userCredential) => {
-      sessionStorage.setItem("user-creds", JSON.stringify(userCredential.user));
-      window.location.href = "../Home_Page/home_page.html";
+      get(child(dbRef, 'UsersAuthList/' + userCredential.user.uid)).then((snapshot) => {
+        if (snapshot.exists()) 
+        {
+          sessionStorage.setItem('user-info', JSON.stringify({
+            firstname: snapshot.val().firstname,
+            lastname: snapshot.val().lastname,
+            birthday: snapshot.val().birthday,
+            role: snapshot.val().role 
+          }))
+          sessionStorage.setItem('user-creds', JSON.stringify(userCredential.user));
+          window.location.href = "../Home_Page/home_page.html";
+        }
+      })
     })
     .catch((error) => {
       alert(error.message);
