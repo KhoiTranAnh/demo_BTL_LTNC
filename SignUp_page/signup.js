@@ -29,7 +29,8 @@ let signUpUser = event => {
   createUserWithEmailAndPassword(auth, email.value, password.value)
   .then((userCredential) => {
     console.log(userCredential);
-    alert("Sign up successfully");
+    sessionStorage.setItem("user-creds", JSON.stringify(userCredential.user));
+    window.location.href = "../Getting_User_Info/getting_user_info.html"; 
   })
   .catch((error) => {
     alert(error.message);
