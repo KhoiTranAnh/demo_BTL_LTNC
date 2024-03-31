@@ -35,8 +35,8 @@ let signInUser = (event) => {
 
   signInWithEmailAndPassword(auth, email.value, password.value)
     .then((userCredential) => {
-      console.log(userCredential);
-      alert("Login Successfully");
+      sessionStorage.setItem("user-creds", JSON.stringify(userCredential.user));
+      window.location.href = "../Home_Page/home_page.html";
     })
     .catch((error) => {
       alert(error.message);
