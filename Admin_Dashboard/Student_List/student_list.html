@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="./student_list.css">
+</head>
+<body>
+  <h1>Admin Dashboard</h1>
+  <nav class="navbar">
+    <ul class="navigation-bar">
+      <li class="overall"><a href="../dashboard.html">Overall</a></li>
+      <li class="student-list"><a href="#">Student List</a></li>
+      <li class="teacher-list"><a href="../Teacher_List/teacher_list.html">Teacher list</a></li>
+      <li class="course-list"><a href="">Course list</a></li>
+      <li class="create-course"><a href="">Create new course</a></li>
+      <li class="course-calendar"><a href="">Course calendar</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h2>Student List</h2>
+    <p id="report"></p>
+    <table>
+      <tbody id="info-table">
+        <th >
+          <td>ID</td>
+          <td>First name</td>
+          <td>Last name</td>
+          <td>Birthday</td>
+        </th>
+      </tbody>
+    </table>
+  </main>
+
+  <script type="module" src="./student_list.js"></script>
+</body>
+</html>

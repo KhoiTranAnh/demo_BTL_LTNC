@@ -40,21 +40,29 @@ h1 {
   background-color: hsl(0, 0%, 10%);
 }
 
-.overall {
-  text-decoration: underline;
-  text-decoration-color: red;
-  text-decoration-thickness: 3px;
-}
-
 .navbar li {
   float: left;
 }
 
-.welcome {
+h2 {
   text-align: center;
 }
 
-.report {
-  border: 20px;
-  text-align: left;
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(140 140 140);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+th,
+td {
+  border: 1px solid rgb(160 160 160);
+  padding: 8px 10px;
+}
+
+.student-list {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-decoration-color: red;
 }

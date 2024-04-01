@@ -4,32 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="./dashboard.css">
 </head>
 <body>
-  <div class="student-list">
-    <ul id="student-list">
-      <li>student_test1</li>
+  <h1>Admin Dashboard</h1>
+  <nav class="navbar">
+    <ul class="navigation-bar">
+      <li class="overall"><a href="#">Overall</a></li>
+      <li class="student-list"><a href="./Student_List/student_list.html">Student list</a></li>
+      <li class="teacher-list"><a href="./Teacher_List/teacher_list.html">Teacher list</a></li>
+      <li class="course-list"><a href="">Course list</a></li>
+      <li class="create-course"><a href="">Create new course</a></li>
+      <li class="course-calendar"><a href="">Course calendar</a></li>
     </ul>
-  </div>
-  <div class="teacher-list">
-    <ul id="teacher-list">
-      <li>teacher-test1</li>
-    </ul>
-  </div>
-  <div class="course-list">
-    <ul id="course-list">
-      <li>course-test1</li>
-    </ul>
-  </div>
-  <form class="create-course" id="create-course-form">
-    <label for="course-id">Course ID</label>
-    <input type="text" id="course-id" placeholder="Enter Course ID" autocomplete="off">
-    <label for="course-name">Course Name</label>
-    <input type="text" id="course-name" placeholder="Enter Course Name" autocomplete="off">
-    <label for="course-size">Course size</label>
-    <input type="number" id="course-size" placeholder="Enter maximum number of student allow in course" autocomplete="off">
-    <button type="submit" id="create-course-button">Create new course</button>
-  </form>
+  </nav>
+
+  <main>
+    <h3 class="welcome">Welcome, admin</h3>
+
+    <p class="report" id="num_of_teacher"></p>
+    <p class="report" id="num_of_student"></p>
+    <p class="report" id="num_of_course"></p>
+  </main>
+
   <script type="module" src="./dashboard.js"></script>
 </body>
 </html>

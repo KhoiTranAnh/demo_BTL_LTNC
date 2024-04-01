@@ -5,6 +5,7 @@ import {
   set,
   ref,
   child,
+  get
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
 
 const firebaseConfig = {
@@ -23,29 +24,46 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const dbref = ref(db);
 
-let course_form = document.getElementById('create-course-form')
-let course_id = document.getElementById('course-id');
-let course_name = document.getElementById('course-name');
-let course_size = document.getElementById('course-size');
+function count_user_id(json_obj) {
+  let count = 0;
+  Object.entries(json_obj).forEach((entry) => {
+    count++;
+  })
+  return count;
+}
 
-let create_new_course = (event) => {
-  event.preventDefault();
-  set(ref(db, "courses/" + course_id.value + '/' + course_name.value), {
-    name: course_name.value,
-    size: course_size.value
-  })
-  .then(() => {
-    console.log("create successfully");
-    sessionStorage.setItem("course-item", JSON.stringify({
-      course_id: course_id.value,
-      course_name: course_name.value,
-      course_size: course_size.value
-    }))
-  })
-  .catch((error) => {
-    console.log(error.code);
-    console.log(error.message);
-  })
-};
+await get(child(dbref, "courses")).then(
+  (snapshot) => {
+    if (snapshot.exists()) {
+      sessionStorage.setItem("courses", JSON.stringify(snapshot.val()));
+    }
+  }
+)
 
-course_form.addEventListener("submit", create_new_course);
+await get(child(dbref, "teacher")).then(
+  (snapshot) => {
+    if (snapshot.exists()) {
+      sessionStorage.setItem("teacher", JSON.stringify(snapshot.val()));
+    }
+  }
+)
+
+await get(child(dbref, "student")).then(
+  (snapshot) => {
+    if (snapshot.exists()) {
+      sessionStorage.setItem("student", JSON.stringify(snapshot.val()));
+    }
+  }
+)
+
+let num_of_teacher = count_user_id(JSON.parse(sessionStorage.getItem('teacher')));
+let num_of_student = count_user_id(JSON.parse(sessionStorage.getItem('student')));
+let num_of_course = count_user_id(JSON.parse(sessionStorage.getItem('courses')));
+
+let report_num_teacher = document.getElementById('num_of_teacher');
+let report_num_student = document.getElementById('num_of_student');
+let report_num_course = document.getElementById('num_of_course');
+
+report_num_course.textContent = `There are currently ${num_of_course} course(s) in our system`;
+report_num_teacher.textContent = `There are currently ${num_of_teacher} teacher(s) in our system`;
+report_num_student.textContent = `There are currently ${num_of_student} student(s) in our system`;
