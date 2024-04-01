@@ -4,6 +4,7 @@ import {
   getDatabase,
   set,
   ref,
+  child,
 } from "https://www.gstatic.com/firebasejs/10.10.0/firebase-database.js";
 
 const firebaseConfig = {
@@ -20,30 +21,31 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
+const dbref = ref(db);
 
-let mainForm = document.getElementById("main-form");
-let user_creds = sessionStorage.getItem("user-creds");
-let firstname = document.getElementById("first-name-input");
-let lastname = document.getElementById("last-name-input");
-let birthday = document.getElementById("birthday-input");
-let role = document.getElementById("roles");
+let course_form = document.getElementById('create-course-form')
+let course_id = document.getElementById('course-id');
+let course_name = document.getElementById('course-name');
+let course_size = document.getElementById('course-size');
 
-let save_user_info = (event) => {
+let create_new_course = (event) => {
   event.preventDefault();
-  set(ref(db, role.value + '/' + JSON.parse(user_creds).uid), {
-    firstname: firstname.value,
-    lastname: lastname.value,
-    birthday: birthday.value,
+  set(ref(db, "courses/" + course_id.value + '/' + course_name.value), {
+    name: course_name.value,
+    size: course_size.value
   })
   .then(() => {
-    sessionStorage.setItem('user-info', JSON.stringify({
-      firstname: firstname.value,
-      lastname: lastname.value,
-      birthday: birthday.value,
-      role: role.value
+    console.log("create successfully");
+    sessionStorage.setItem("course-item", JSON.stringify({
+      course_id: course_id.value,
+      course_name: course_name.value,
+      course_size: course_size.value
     }))
-    window.location.href = '../Home_Page/home_page.html';
+  })
+  .catch((error) => {
+    console.log(error.code);
+    console.log(error.message);
   })
 };
 
-mainForm.addEventListener("submit", save_user_info);
+course_form.addEventListener("submit", create_new_course);
