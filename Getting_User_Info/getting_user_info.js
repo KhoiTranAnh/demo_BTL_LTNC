@@ -30,11 +30,14 @@ let role = document.getElementById("roles");
 
 let save_user_info = (event) => {
   event.preventDefault();
+  set(ref(db, 'UsersAuthList/' + JSON.parse(user_creds).uid), {
+    role: role.value
+  });
   set(ref(db, role.value + '/' + JSON.parse(user_creds).uid), {
     firstname: firstname.value,
     lastname: lastname.value,
     birthday: birthday.value,
-  })
+  }) 
   .then(() => {
     sessionStorage.setItem('user-info', JSON.stringify({
       firstname: firstname.value,
