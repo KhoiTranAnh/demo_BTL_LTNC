@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="../Create_Course/create_course.css">
+</head>
+
+<body>
+  <h1>Admin Dashboard</h1>
+  <nav class="navbar">
+    <ul class="navigation-bar">
+      <li class="overall"><a href="../dashboard.html">Overall</a></li>
+      <li class="student-list"><a href="./Student_List/student_list.html">Student list</a></li>
+      <li class="teacher-list"><a href="./Teacher_List/teacher_list.html">Teacher list</a></li>
+      <li class="course-list"><a href="">Course list</a></li>
+      <li class="create-course"><a href="">Create new course</a></li>
+      <li class="course-calendar"><a href="">Course calendar</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <form action="" id="main-form">
+      <h3 class="welcome">Creating new course</h3>
+      <label for="id">Course ID</label>
+      <input type="text" id="id" autocomplete="off">
+
+      <label for="name">Course name</label>
+      <input type="text" id="name" autocomplete="off">
+
+      <label for="class">Class</label>
+      <input type="text" id="class" autocomplete="off">
+
+      <label for="number-of-student">Number of student</label>
+      <input type="text" id="number-of-student" autocomplete="off">
+
+      <!-- TO DO: Add teacher selection -->
+      <!-- TO DO: Add course calendar -->
+
+      <button type="submit" id="create-button">Create</button>
+    </form>
+
+  </main>
+
+  <script type="module" src="../Create_Course/create_course.js"></script>
+</body>
+
+</html>
