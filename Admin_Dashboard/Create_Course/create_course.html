@@ -13,8 +13,8 @@
   <nav class="navbar">
     <ul class="navigation-bar">
       <li class="overall"><a href="../dashboard.html">Overall</a></li>
-      <li class="student-list"><a href="./Student_List/student_list.html">Student list</a></li>
-      <li class="teacher-list"><a href="./Teacher_List/teacher_list.html">Teacher list</a></li>
+      <li class="student-list"><a href="../Student_List/student_list.html">Student list</a></li>
+      <li class="teacher-list"><a href="../Teacher_List/teacher_list.html">Teacher list</a></li>
       <li class="course-list"><a href="">Course list</a></li>
       <li class="create-course"><a href="">Create new course</a></li>
       <li class="course-calendar"><a href="">Course calendar</a></li>
@@ -37,7 +37,33 @@
       <input type="text" id="number-of-student" autocomplete="off">
 
       <!-- TO DO: Add teacher selection -->
+      <label for="select-teacher">Assign teacher</label>
+      <select name="teacher" id="select-teacher">
+        <option value="">Teacher ID - Name - Date of birth</option>
+      </select>
       <!-- TO DO: Add course calendar -->
+      <label for="course-length">Course length (in weeks)</label>
+      <input type="number" id="course-length" autocomplete="off">
+
+      <label for="course-begin-date">Begin date</label>
+      <input type="date" id="course-begin-date" autocomplete="off">
+
+      <label for="weekday">Choose a weekday for course</label>
+      <select name="weekday" id="weekday">
+        <option value="monday">Monday</option>
+        <option value="tuesday">Tuesday</option>
+        <option value="wednesday">Wednesday</option>
+        <option value="thursday">Thursday</option>
+        <option value="friday">Friday</option>
+        <option value="saturday">Saturday</option>
+        <option value="sunday">Sunday</option>
+      </select>
+
+      <label for="time-begin">Begining time</label>
+      <input type="time" id="time-begin" autocomplete="off">
+
+      <label for="time-end">Ending time</label>
+      <input type="time" id="time-end" autocomplete="off">
 
       <button type="submit" id="create-button">Create</button>
     </form>
