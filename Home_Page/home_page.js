@@ -22,6 +22,10 @@ const db = getDatabase();
 const dbref = ref(db);
 
 let user_creds = JSON.parse(sessionStorage.getItem('user-creds'))
+if (user_creds == null) {
+  window.location.href = '../Login_Page/login.html';
+}
+
 let user_role = JSON.parse(sessionStorage.getItem("user-role"));
 
 await get(child(dbref, user_role.role + '/' + user_creds.uid))
@@ -41,8 +45,15 @@ let user_info = document.getElementById("user-info");
 
 let info = JSON.parse(sessionStorage.getItem("user-info"));
 
-welcome.textContent = `Welcome ${info.firstname} ${info.lastname}`;
-user_info.textContent = `You born in ${info.birthday} and your role is ${info.role}`;
+if (user_creds.uid == "DfNhQpL0rKPZ1ZOvNQ5gLM14jGd2") {
+  let dashboard = document.getElementById("admin-dashboard");
+  dashboard.style.display = "initial";
+  welcome.textContent = `Welcome ${info.firstname} ${info.lastname}`;
+  user_info.textContent = `You born in ${info.birthday} and your role is admin`;
+} else {
+  welcome.textContent = `Welcome ${info.firstname} ${info.lastname}`;
+  user_info.textContent = `You born in ${info.birthday} and your role is ${info.role}`;
+}
 
 let logout = (event) => {
   event.preventDefault();

@@ -45,6 +45,12 @@ let save_user_info = (event) => {
       birthday: birthday.value,
       role: role.value
     }))
+    sessionStorage.setItem(
+      'user-role', 
+      JSON.stringify({
+        role: role.value
+      }) 
+    )
     window.location.href = '../Home_Page/home_page.html';
   })
 };
